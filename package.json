@@ -70,5 +70,8 @@
     "components/*",
     "assets/*",
     "index.js"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
