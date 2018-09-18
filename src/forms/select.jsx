@@ -9,14 +9,12 @@ class Select extends MultipleChoice(Input) {
 
   render() {
     const options = this.normaliseOptions();
-    return <div className={this.errorClass('form-group')}>
-      <label className="form-label" htmlFor={this.id()}>
-        <span className="form-label-bold">{this.props.label}</span>
-        { this.props.hint && <span className="form-hint">{this.props.hint}</span> }
-        { this.props.error && <span className="error-message">{this.props.error}</span> }
-      </label>
+    return <div className={this.errorClass('govuk-form-group')}>
+      <label className="govuk-label" htmlFor={this.id()}>{this.props.label}</label>
+      { this.props.hint && <span id={this.id() + '-hint'} className="govuk-hint">{this.props.hint}</span> }
+      { this.props.error && <span id={this.id() + '-error'} className="govuk-error-message">{this.props.error}</span> }
       <select
-        className={this.errorClass('form-control')}
+        className={this.errorClass('govuk-select')}
         id={this.id()}
         name={this.props.name}
         {...this.checkedOrUnchecked()}
