@@ -6,14 +6,13 @@ class TextArea extends Input {
 
   render() {
     const {label, hint, error, name, rows, cols, disabled, readonly, ...other} = this.props;
-    return <div className={this.errorClass('form-group')}>
-      <label className="form-label" htmlFor={this.id()}>
-        <span className="form-label-bold">{label}</span>
-        { hint && <span className="form-hint">{hint}</span> }
-        { error && <span className="error-message">{error}</span> }
-      </label>
+
+    return <div className={this.errorClass('govuk-form-group')}>
+      <label className="govuk-label" htmlFor={this.id()}>{label}</label>
+      { hint && <span id={this.id() + '-hint'} className="govuk-hint">{hint}</span> }
+      { error && <span id={this.id() + '-error'} className="govuk-error-message">{error}</span> }
       <textarea
-        className={this.errorClass('form-control')}
+        className={this.errorClass('govuk-textarea')}
         id={this.id()}
         name={name}
         rows={rows}
