@@ -7,6 +7,7 @@ export { default as SubNavItem, navItemOf as subNavItemOf } from './subnavbar/na
 // forms
 export { default as DateInput } from './forms/date';
 export { default as Input } from './forms/input-text';
+export { default as CheckboxGroup } from './forms/checkbox-group';
 export { default as RadioGroup } from './forms/radio-group';
 export { default as Select } from './forms/select';
 export { default as TextArea } from './forms/textarea';

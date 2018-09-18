@@ -5,7 +5,7 @@ import Types from '../types';
 import Input from './input';
 import MultipleChoice from '../mixins/multiple-choice';
 
-class RadioGroup extends MultipleChoice(Input) {
+class CheckboxGroup extends MultipleChoice(Input) {
 
   optProps(opt) {
     if (this.props.onChange) {
@@ -28,19 +28,19 @@ class RadioGroup extends MultipleChoice(Input) {
         </legend>
         { this.props.hint && <span id={this.id() + '-hint'} className="govuk-hint">{this.props.hint}</span> }
         { this.props.error && <span id={this.id() + '-error'} className="govuk-error-message">{this.props.error}</span> }
-        <div className="govuk-radios">
+        <div className="govuk-checkboxes">
           {
             options.map(opt => (
-              <div className="govuk-radios__item" key={this.optionId(opt)}>
+              <div className="govuk-checkboxes__item" key={this.optionId(opt)}>
                 <input
-                  className="govuk-radios__input"
+                  className="govuk-checkboxes__input"
                   id={this.optionId(opt)}
-                  type="radio"
+                  type="checkbox"
                   name={this.props.name}
                   value={opt.value}
                   {...this.optProps(opt)}
                 />
-                <label htmlFor={this.optionId(opt)} className="govuk-label govuk-radios__label">{opt.label}</label>
+                <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
               </div>
             ))
@@ -52,12 +52,12 @@ class RadioGroup extends MultipleChoice(Input) {
 
 }
 
-RadioGroup.defaultProps = {
+CheckboxGroup.defaultProps = {
   options: [],
   inline: false
 };
 
-RadioGroup.propTypes = {
+CheckboxGroup.propTypes = {
   name: PropTypes.string.isRequired,
   options: Types.options.isRequired,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -69,4 +69,4 @@ RadioGroup.propTypes = {
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
 };
 
-export default RadioGroup;
+export default CheckboxGroup;
