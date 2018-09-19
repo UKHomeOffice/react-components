@@ -10,7 +10,8 @@ class DateInput extends Input {
   }
 
   parseValue() {
-    const bits = this.props.value.split('-');
+    const date = this.props.value.split('T')[0];
+    const bits = date.split('-');
     return {
       day: bits[2],
       month: bits[1],
