@@ -25,9 +25,9 @@ class DateInput extends Input {
       <fieldset className="govuk-fieldset" aria-describedby={this.dateFragment('hint')} role="group">
         <legend className="govuk-fieldset__legend">
           <span className="govuk-label">{this.props.label}</span>
-          { this.props.hint && <span className="govuk-hint" id={this.dateFragment('hint')}>{this.props.hint}</span> }
-          { this.props.error && <span className="govuk-error-message">{this.props.error}</span> }
         </legend>
+        { this.props.hint && <span className="govuk-hint" id={this.dateFragment('hint')}>{this.props.hint}</span> }
+        { this.props.error && <span className="govuk-error-message">{this.props.error}</span> }
         <div className="govuk-date-input">
           <div className="govuk-date-input__item">
             <div className="govuk-form-group">
