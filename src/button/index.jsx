@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const buttonOf = (Type) => {
   const component = (props) => (
-    <Type {...props} className={`button${props.className ? ' ' + props.className : ''}`}>{props.children}</Type>
+    <Type {...props} className={`govuk-button${props.className ? ' ' + props.className : ''}`}>{props.children}</Type>
   );
   component.defaultName = 'ButtonOfType' + Type
   component.propTypes = {
