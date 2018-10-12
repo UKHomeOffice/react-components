@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Types from '../types';
 
@@ -42,6 +43,13 @@ class CheckboxGroup extends MultipleChoice(Input) {
                 />
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
+                {
+                  opt.reveal && (
+                    <div className={ classnames({ hidden: !this.hasValue(opt.value) }) }>
+                      { opt.reveal }
+                    </div>
+                  )
+                }
               </div>
             ))
           }
