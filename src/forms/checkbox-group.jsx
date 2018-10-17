@@ -8,6 +8,10 @@ import MultipleChoice from '../mixins/multiple-choice';
 
 class CheckboxGroup extends MultipleChoice(Input) {
 
+  componentDidMount() {
+    this.setState({})
+  }
+
   optProps(opt) {
     if (this.props.onChange) {
       return {
@@ -45,7 +49,7 @@ class CheckboxGroup extends MultipleChoice(Input) {
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
                 {
                   opt.reveal && (
-                    <div className={ classnames('govuk-reveal', { hidden: !this.hasValue(opt.value) }) }>
+                    <div className={ classnames('govuk-reveal', { hidden: this.state && !this.hasValue(opt.value) }) }>
                       { opt.reveal }
                     </div>
                   )
