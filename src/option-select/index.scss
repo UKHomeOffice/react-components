@@ -41,6 +41,8 @@
     background-color: $page-colour;
     overflow-y: auto;
     overflow-x: hidden;
+    max-height: none;
+    height: 200px;
 
     @include media(desktop) {
       max-height: 200px;
