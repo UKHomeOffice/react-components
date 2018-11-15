@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Types from '../types';
 
 import Input from './input';
 import MultipleChoice from '../mixins/multiple-choice';
 
 class RadioGroup extends MultipleChoice(Input) {
+
+  componentDidMount() {
+    this.setState({});
+  }
 
   optProps(opt) {
     if (this.props.onChange) {
@@ -42,6 +47,13 @@ class RadioGroup extends MultipleChoice(Input) {
                 />
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-radios__label">{opt.label}</label>
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
+                {
+                  opt.reveal && (
+                    <div className={ classnames('govuk-reveal', { hidden: this.state && !this.hasValue(opt.value) }) }>
+                      { opt.reveal }
+                    </div>
+                  )
+                }
               </div>
             ))
           }

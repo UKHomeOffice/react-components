@@ -9,7 +9,7 @@ import MultipleChoice from '../mixins/multiple-choice';
 class CheckboxGroup extends MultipleChoice(Input) {
 
   componentDidMount() {
-    this.setState({})
+    this.setState({});
   }
 
   optProps(opt) {
