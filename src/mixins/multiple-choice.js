@@ -21,4 +21,3 @@ export default (superclass) => class MultipleChoice extends superclass {
   }
 
 };
-

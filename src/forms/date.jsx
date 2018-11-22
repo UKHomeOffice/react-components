@@ -55,7 +55,7 @@ class DateInput extends Input {
           </div>
         </div>
       </fieldset>
-    </div>
+    </div>;
   }
 
 }

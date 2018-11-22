@@ -5,7 +5,7 @@ export const buttonOf = (Type) => {
   const component = (props) => (
     <Type {...props} className={`govuk-button${props.className ? ' ' + props.className : ''}`}>{props.children}</Type>
   );
-  component.defaultName = 'ButtonOfType' + Type
+  component.defaultName = 'ButtonOfType' + Type;
   component.propTypes = {
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
     onClick: PropTypes.func,

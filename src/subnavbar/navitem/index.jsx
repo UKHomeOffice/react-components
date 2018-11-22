@@ -9,7 +9,7 @@ export const navItemOf = (Type) => {
       <li>
         <Type {...other} className={elemClass}>{props.children}</Type>
       </li>
-    )
+    );
   };
   component.defaultName = 'NavItemOf' + Type;
   component.propTypes = {
