@@ -1,5 +1,2 @@
 extends:
   - lennym
-
-plugins:
-  - class-property
