@@ -21,7 +21,7 @@ class TextArea extends Input {
         readOnly={readonly}
         {...other}
         {...this.checkedOrUnchecked()}
-        />
+      />
     </div>;
   }
 

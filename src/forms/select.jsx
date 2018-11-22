@@ -18,7 +18,7 @@ class Select extends MultipleChoice(Input) {
         id={this.id()}
         name={this.props.name}
         {...this.checkedOrUnchecked()}
-        >
+      >
         {
           this.props.nullOption && <option value="">{this.props.nullOption}</option> }
         {
@@ -26,7 +26,7 @@ class Select extends MultipleChoice(Input) {
             <option
               value={opt.value}
               key={opt.value}
-              >{opt.label}</option>
+            >{opt.label}</option>
           ))
         }
       </select>

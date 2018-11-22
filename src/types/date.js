@@ -5,6 +5,6 @@ const date = (props, name, component) => {
       ' `' + component + '`. Not a valid date (YYYY-MM-DD).'
     );
   }
-}
+};
 
 export default date;
