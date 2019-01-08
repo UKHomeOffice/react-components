@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Types from '../types';
@@ -26,6 +26,13 @@ class RadioGroup extends MultipleChoice(Input) {
 
   render() {
     const options = this.normaliseOptions();
+
+    const getReveal = (option, index) => (
+      <div key={index} className={ classnames('govuk-reveal', { hidden: this.state && !this.hasValue(option.value) }) }>
+        { option.reveal }
+      </div>
+    );
+
     return <div className={this.errorClass('govuk-form-group')}>
       <fieldset
         id={this.props.id || this.props.name}
@@ -51,16 +58,17 @@ class RadioGroup extends MultipleChoice(Input) {
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-radios__label">{opt.label}</label>
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
                 {
-                  opt.reveal && (
-                    <div className={ classnames('govuk-reveal', { hidden: this.state && !this.hasValue(opt.value) }) }>
-                      { opt.reveal }
-                    </div>
-                  )
+                  opt.reveal && !this.props.inline && getReveal(opt)
                 }
               </div>
             ))
           }
         </div>
+        <Fragment>
+          {
+            this.props.inline && options.map((option, index) => option.reveal && getReveal(option, index))
+          }
+        </Fragment>
       </fieldset>
     </div>;
   }
