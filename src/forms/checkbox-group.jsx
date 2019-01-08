@@ -27,7 +27,7 @@ class CheckboxGroup extends MultipleChoice(Input) {
   render() {
     const options = this.normaliseOptions();
     return <div className={this.errorClass('govuk-form-group')}>
-      <fieldset id={this.props.id || this.props.name} className={'govuk-fieldset ' + this.props.inline ? 'inline' : ''}>
+      <fieldset id={this.props.id || this.props.name} className={classnames('govuk-fieldset', { inline: this.props.inline }, this.props.className)}>
         <legend className="govuk-fieldset__legend">
           <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>
         </legend>
