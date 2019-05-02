@@ -10,8 +10,12 @@ class TextArea extends Input {
 
     return <div className={classnames(this.errorClass('govuk-form-group'), className)}>
       <label className="govuk-label" htmlFor={this.id()}>{label}</label>
-      { hint && <span id={this.id() + '-hint'} className="govuk-hint">{hint}</span> }
-      { error && <span id={this.id() + '-error'} className="govuk-error-message">{error}</span> }
+      {
+        this.getContentPart('hint')
+      }
+      {
+        this.getContentPart('error', 'error-message')
+      }
       <textarea
         className={this.errorClass('govuk-textarea')}
         id={this.id()}

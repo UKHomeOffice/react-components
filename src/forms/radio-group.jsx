@@ -41,8 +41,12 @@ class RadioGroup extends MultipleChoice(Input) {
         <legend className="govuk-fieldset__legend">
           <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>
         </legend>
-        { this.props.hint && <span id={this.id() + '-hint'} className="govuk-hint">{this.props.hint}</span> }
-        { this.props.error && <span id={this.id() + '-error'} className="govuk-error-message">{this.props.error}</span> }
+        {
+          this.getContentPart('hint')
+        }
+        {
+          this.getContentPart('error', 'error-message')
+        }
         <div className="govuk-radios">
           {
             options.map(opt => (
