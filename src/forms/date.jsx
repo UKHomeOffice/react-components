@@ -26,8 +26,12 @@ class DateInput extends Input {
         <legend className="govuk-fieldset__legend">
           <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>
         </legend>
-        { this.props.hint && <span className="govuk-hint" id={this.dateFragment('hint')}>{this.props.hint}</span> }
-        { this.props.error && <span className="govuk-error-message">{this.props.error}</span> }
+        {
+          this.getContentPart('hint')
+        }
+        {
+          this.getContentPart('error', 'error-message')
+        }
         <div className="govuk-date-input">
           <div className="govuk-date-input__item">
             <div className="govuk-form-group">

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown';
 
 class Input extends React.Component {
 
@@ -21,6 +22,17 @@ class Input extends React.Component {
     return {
       defaultValue: this.props.value
     };
+  }
+
+  getContentPart(type, className) {
+    if (!this.props[type]) {
+      return null;
+    }
+    return (
+      <span id={`${this.id()}-${type}`} className={className || `govuk-${type}`}>
+        <ReactMarkdown>{this.props[type]}</ReactMarkdown>
+      </span>
+    );
   }
 
 }

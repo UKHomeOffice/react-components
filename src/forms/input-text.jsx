@@ -7,8 +7,12 @@ class TextInput extends Input {
   render() {
     return <div className={this.errorClass('govuk-form-group')}>
       <label className="govuk-label" htmlFor={this.id()}>{this.props.label}</label>
-      { this.props.hint && <span id={this.id() + '-hint'} className="govuk-hint">{this.props.hint}</span> }
-      { this.props.error && <span id={this.id() + '-error'} className="govuk-error-message">{this.props.error}</span> }
+      {
+        this.getContentPart('hint')
+      }
+      {
+        this.getContentPart('error', 'error-message')
+      }
       <input
         className={this.errorClass('govuk-input')}
         id={this.id()}
