@@ -28,12 +28,13 @@ class Input extends React.Component {
     if (!this.props[type]) {
       return null;
     }
-    if (React.isValidElement(this.props[type])) {
-      return this.props[type];
-    }
     return (
       <span id={`${this.id()}-${type}`} className={className || `govuk-${type}`}>
-        <ReactMarkdown>{this.props[type]}</ReactMarkdown>
+        {
+          React.isValidElement(this.props[type])
+            ? this.props[type]
+            : <ReactMarkdown>{this.props[type]}</ReactMarkdown>
+        }
       </span>
     );
   }
