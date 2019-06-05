@@ -11,7 +11,7 @@ class TextInput extends Input {
         this.getContentPart('hint')
       }
       {
-        this.getContentPart('error', 'error-message')
+        this.getContentPart('error', 'govuk-error-message')
       }
       <input
         className={this.errorClass('govuk-input')}

@@ -35,7 +35,7 @@ class CheckboxGroup extends MultipleChoice(Input) {
           this.getContentPart('hint')
         }
         {
-          this.getContentPart('error', 'error-message')
+          this.getContentPart('error', 'govuk-error-message')
         }
         <div className="govuk-checkboxes">
           {

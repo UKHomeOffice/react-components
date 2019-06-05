@@ -15,7 +15,7 @@ class Select extends MultipleChoice(Input) {
         this.getContentPart('hint')
       }
       {
-        this.getContentPart('error', 'error-message')
+        this.getContentPart('error', 'govuk-error-message')
       }
       <select
         className={this.errorClass('govuk-select')}

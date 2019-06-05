@@ -30,7 +30,7 @@ class DateInput extends Input {
           this.getContentPart('hint')
         }
         {
-          this.getContentPart('error', 'error-message')
+          this.getContentPart('error', 'govuk-error-message')
         }
         <div className="govuk-date-input">
           <div className="govuk-date-input__item">

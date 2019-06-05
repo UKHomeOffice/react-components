@@ -14,7 +14,7 @@ class TextArea extends Input {
         this.getContentPart('hint')
       }
       {
-        this.getContentPart('error', 'error-message')
+        this.getContentPart('error', 'govuk-error-message')
       }
       <textarea
         className={this.errorClass('govuk-textarea')}
