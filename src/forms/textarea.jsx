@@ -5,8 +5,14 @@ import PropTypes from 'prop-types';
 
 class TextArea extends Input {
 
+  onInput(e) {
+    const textarea = e.target;
+    textarea.style.height = '';
+    textarea.style.height = `${Math.min(textarea.scrollHeight, this.props.maxHeight)}px`;
+  }
+
   render() {
-    const {label, hint, error, name, rows, cols, disabled, readonly, className, ...other} = this.props;
+    const {label, hint, error, name, rows, cols, disabled, readonly, className, autoExpand, ...other} = this.props;
 
     return <div className={classnames(this.errorClass('govuk-form-group'), className)}>
       <label className="govuk-label" htmlFor={this.id()}>{label}</label>
@@ -17,6 +23,7 @@ class TextArea extends Input {
         this.getContentPart('error', 'govuk-error-message')
       }
       <textarea
+        ref={this.textarea}
         className={this.errorClass('govuk-textarea')}
         id={this.id()}
         name={name}
@@ -26,6 +33,7 @@ class TextArea extends Input {
         readOnly={readonly}
         {...other}
         {...this.checkedOrUnchecked()}
+        onInput={autoExpand ? this.onInput.bind(this) : null}
       />
     </div>;
   }
@@ -35,6 +43,8 @@ class TextArea extends Input {
 TextArea.defaultProps = {
   disabled: false,
   readonly: false,
+  autoExpand: false,
+  maxHeight: Infinity,
   rows: 4
 };
 
@@ -49,7 +59,8 @@ TextArea.propTypes = {
   cols: PropTypes.number,
   rows: PropTypes.number,
   disabled: PropTypes.bool,
-  readonly: PropTypes.bool
+  readonly: PropTypes.bool,
+  autoExpand: PropTypes.bool
 };
 
 export default TextArea;
