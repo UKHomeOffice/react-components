@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import omit from 'lodash/omit';
 import Input from './input';
 import PropTypes from 'prop-types';
 
@@ -31,7 +32,7 @@ class TextArea extends Input {
         cols={cols}
         disabled={disabled}
         readOnly={readonly}
-        {...other}
+        {...omit(other, 'maxHeight')}
         {...this.checkedOrUnchecked()}
         onInput={autoExpand ? this.onInput.bind(this) : null}
       />
