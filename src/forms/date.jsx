@@ -25,7 +25,7 @@ class DateInput extends Input {
   }
 
   parseValue() {
-    const date = this.props.value.split('T')[0];
+    const date = (this.props.value || '').split('T')[0];
     const bits = date.split('-');
     return {
       day: bits[2],
