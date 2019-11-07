@@ -1,26 +1,22 @@
 import React from 'react';
 import Input from './input';
 import PropTypes from 'prop-types';
+import InputWrapper from './input-wrapper';
 
 class TextInput extends Input {
 
   render() {
-    return <div className={this.errorClass('govuk-form-group')}>
-      <label className="govuk-label" htmlFor={this.id()}>{this.props.label}</label>
-      {
-        this.getContentPart('hint')
-      }
-      {
-        this.getContentPart('error', 'govuk-error-message')
-      }
-      <input
-        className={this.errorClass('govuk-input')}
-        id={this.id()}
-        name={this.props.name}
-        type={this.props.type}
-        {...this.checkedOrUnchecked()}
-      />
-    </div>;
+    return (
+      <InputWrapper {...this.props}>
+        <input
+          className={this.errorClass('govuk-input')}
+          id={this.id()}
+          name={this.props.name}
+          type={this.props.type}
+          {...this.checkedOrUnchecked()}
+        />
+      </InputWrapper>
+    );
   }
 
 }

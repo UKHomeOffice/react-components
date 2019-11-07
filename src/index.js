@@ -11,6 +11,7 @@ export { default as CheckboxGroup } from './forms/checkbox-group';
 export { default as RadioGroup } from './forms/radio-group';
 export { default as Select } from './forms/select';
 export { default as TextArea } from './forms/textarea';
+export { default as InputWrapper } from './forms/input-wrapper';
 export { Button, LinkButton, buttonOf } from './button';
 
 // other
