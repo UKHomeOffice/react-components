@@ -1,6 +1,6 @@
 {
   "name": "@ukhomeoffice/react-components",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "React components for Home Office layouts and elements",
   "main": "dist/ho-react-components.js",
   "module": "dist/ho-react-components.module.js",
