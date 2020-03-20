@@ -1,0 +1,21 @@
+.govuk-warning-text.info {
+  border: 5px solid $blue;
+  padding: $govuk-gutter-half;
+
+  .govuk-warning-text__icon {
+    border-color: $blue;
+    background-color: $blue;
+    left: 8px;
+    top: 8px;
+    margin-top: 0;
+  }
+
+  .govuk-warning-text__text {
+    padding-left: 40px;
+    font-weight: normal;
+
+    p:first-child, p:last-child {
+      margin: 0;
+    }
+  }
+}
