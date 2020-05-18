@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import pickBy from 'lodash/pickBy';
 import Input from './input';
 import PropTypes from 'prop-types';
-import { globalAttributes, eventAttributes } from '../html-attributes';
+import { globalAttributes, formEventAttributes } from '../html-attributes';
 
 const textareaAttributes = [
   'autofocus',
@@ -21,7 +21,7 @@ const textareaAttributes = [
 ];
 
 const cleanProps = props => {
-  const validAttributes = [].concat(globalAttributes, eventAttributes, textareaAttributes);
+  const validAttributes = [].concat(globalAttributes, formEventAttributes, textareaAttributes);
   return pickBy(props, (value, key) => validAttributes.includes(key) || /^data-/.test(key));
 };
 

@@ -16,25 +16,20 @@ const globalAttributes = [
   'translate'
 ];
 
-const eventAttributes = [
-  'onafterprint',
-  'onbeforeprint',
-  'onbeforeunload',
-  'onerror',
-  'onhashchange',
-  'onload',
-  'onmessage',
-  'onoffline',
-  'ononline',
-  'onpagehide',
-  'onpageshow',
-  'onpopstate',
-  'onresize',
-  'onstorage',
-  'onunload'
+const formEventAttributes = [
+  'onblur',
+  'onchange',
+  'oncontextmenu',
+  'onfocus',
+  'oninput',
+  'oninvalid',
+  'onreset',
+  'onsearch',
+  'onselect',
+  'onsubmit'
 ];
 
 module.exports = {
   globalAttributes,
-  eventAttributes
+  formEventAttributes
 };
