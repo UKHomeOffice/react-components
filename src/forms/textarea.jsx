@@ -1,8 +1,29 @@
 import React from 'react';
 import classnames from 'classnames';
-import omit from 'lodash/omit';
+import pickBy from 'lodash/pickBy';
 import Input from './input';
 import PropTypes from 'prop-types';
+import { globalAttributes, eventAttributes } from '../html-attributes';
+
+const textareaAttributes = [
+  'autofocus',
+  'cols',
+  'dirname',
+  'disabled',
+  'form',
+  'maxlength',
+  'name',
+  'placeholder',
+  'readonly',
+  'required',
+  'rows',
+  'wrap'
+];
+
+const cleanProps = props => {
+  const validAttributes = [].concat(globalAttributes, eventAttributes, textareaAttributes);
+  return pickBy(props, (value, key) => validAttributes.includes(key) || /^data-/.test(key));
+};
 
 class TextArea extends Input {
 
@@ -32,7 +53,7 @@ class TextArea extends Input {
         cols={cols}
         disabled={disabled}
         readOnly={readonly}
-        {...omit(other, 'maxHeight', 'dispatch')}
+        {...cleanProps(other)}
         {...this.checkedOrUnchecked()}
         onInput={autoExpand ? this.onInput.bind(this) : null}
       />
