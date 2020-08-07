@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Types from '../types';
 
 import Input from './input';
@@ -9,7 +10,7 @@ class Select extends MultipleChoice(Input) {
 
   render() {
     const options = this.normaliseOptions();
-    return <div className={this.errorClass('govuk-form-group')}>
+    return <div className={classnames(this.errorClass('govuk-form-group'), this.props.className)}>
       <label className="govuk-label" htmlFor={this.id()}>{this.props.label}</label>
       {
         this.getContentPart('hint')
@@ -54,7 +55,8 @@ Select.propTypes = {
   value: Types.value,
   hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  nullOption: PropTypes.string
+  nullOption: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
 };
 
 export default Select;
