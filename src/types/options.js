@@ -5,7 +5,8 @@ export default PropTypes.arrayOf(
   PropTypes.oneOfType([
     PropTypes.shape({
       value,
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+      label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+      disabled: PropTypes.boolean
     }),
     value
   ])

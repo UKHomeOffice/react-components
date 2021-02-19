@@ -51,6 +51,7 @@ class CheckboxGroup extends MultipleChoice(Input) {
                   type="checkbox"
                   name={this.props.name}
                   value={opt.value}
+                  disabled={opt.disabled}
                   {...this.optProps(opt)}
                 />
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>

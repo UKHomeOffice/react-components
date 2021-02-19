@@ -57,6 +57,7 @@ class RadioGroup extends MultipleChoice(Input) {
                   type="radio"
                   name={this.props.name}
                   value={opt.value}
+                  disabled={opt.diabled}
                   {...this.optProps(opt)}
                 />
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-radios__label">{opt.label}</label>
