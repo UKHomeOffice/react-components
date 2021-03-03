@@ -13,6 +13,7 @@ class TextInput extends Input {
           id={this.id()}
           name={this.props.name}
           type={this.props.type}
+          disabled={this.props.disabled}
           {...this.checkedOrUnchecked()}
         />
       </InputWrapper>

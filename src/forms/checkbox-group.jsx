@@ -45,6 +45,9 @@ class CheckboxGroup extends MultipleChoice(Input) {
           {
             options.map(opt => (
               <div className="govuk-checkboxes__item" key={this.optionId(opt)}>
+                {
+                  opt.disabled && this.hasValue(opt.value) && <input type="hidden" name={this.props.name} value={opt.value} />
+                }
                 <input
                   className="govuk-checkboxes__input"
                   id={this.optionId(opt)}
