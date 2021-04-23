@@ -61,8 +61,12 @@ class CheckboxGroup extends MultipleChoice(Input) {
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
                 {
                   opt.reveal && (
-                    <div className={ classnames('govuk-reveal', { hidden: this.state && !this.hasValue(opt.value) }) }>
-                      { opt.reveal }
+                    <div className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(opt.value) }) }>
+                      {
+                        this.props.initialHideReveals
+                          ? (this.hasValue(opt.value) && opt.reveal)
+                          : opt.reveal
+                      }
                     </div>
                   )
                 }
@@ -84,6 +88,7 @@ CheckboxGroup.defaultProps = {
 CheckboxGroup.propTypes = {
   name: PropTypes.string.isRequired,
   options: Types.options.isRequired,
+  initialHideReveals: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   onChange: PropTypes.func,
   id: PropTypes.string,
