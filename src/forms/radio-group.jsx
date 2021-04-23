@@ -37,7 +37,7 @@ class RadioGroup extends MultipleChoice(Input) {
           { option.reveal }
         </div>
       );
-    }
+    };
 
     return <div className={this.errorClass('govuk-form-group')}>
       <fieldset

@@ -69,7 +69,7 @@ class CheckboxGroup extends MultipleChoice(Input) {
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
                 {
-                  opt.reveal && showReveal(opt) (
+                  opt.reveal && showReveal(opt)(
                     <div className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(opt.value) }) }>
                       { opt.reveal }
                     </div>
