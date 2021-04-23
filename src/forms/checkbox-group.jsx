@@ -26,6 +26,15 @@ class CheckboxGroup extends MultipleChoice(Input) {
 
   render() {
     const options = this.normaliseOptions();
+
+    function showReveal(opt) {
+      if (!this.props.initialHideReveals) {
+        return true;
+      }
+
+      return this.hasValue(opt.value);
+    }
+
     return <div className={this.errorClass('govuk-form-group')}>
       <fieldset id={this.props.id || this.props.name} className={classnames('govuk-fieldset', { inline: this.props.inline }, this.props.className)}>
         {
@@ -60,13 +69,9 @@ class CheckboxGroup extends MultipleChoice(Input) {
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
                 {
-                  opt.reveal && (
+                  opt.reveal && showReveal(opt) (
                     <div className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(opt.value) }) }>
-                      {
-                        this.props.initialHideReveals
-                          ? (this.hasValue(opt.value) && opt.reveal)
-                          : opt.reveal
-                      }
+                      { opt.reveal }
                     </div>
                   )
                 }

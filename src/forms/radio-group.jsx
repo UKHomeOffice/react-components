@@ -27,15 +27,17 @@ class RadioGroup extends MultipleChoice(Input) {
   render() {
     const options = this.normaliseOptions();
 
-    const getReveal = (option, index) => (
-      <div key={index} className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(option.value) }) }>
-        {
-          this.props.initialHideReveals
-            ? (this.hasValue(option.value) && option.reveal)
-            : option.reveal
-        }
-      </div>
-    );
+    const getReveal = (option, index) => {
+      if (this.props.initialHideReveals && !this.hasValue(option.value)) {
+        return null;
+      }
+
+      return (
+        <div key={index} className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(option.value) }) }>
+          { option.reveal }
+        </div>
+      );
+    }
 
     return <div className={this.errorClass('govuk-form-group')}>
       <fieldset
