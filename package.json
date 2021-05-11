@@ -33,7 +33,7 @@
   "homepage": "https://github.com/ukhomeoffice/react-components#readme",
   "dependencies": {
     "classnames": "^2.2.6",
-    "react-markdown": "^4.0.8"
+    "react-markdown": "^6.0.2"
   },
   "peerDependencies": {
     "prop-types": ">= 15.4.0",
