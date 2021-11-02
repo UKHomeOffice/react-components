@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Types from '../types';
-
+import Warning from '../warning';
 import Input from './input';
 import MultipleChoice from '../mixins/multiple-choice';
 
@@ -68,6 +68,12 @@ class CheckboxGroup extends MultipleChoice(Input) {
                 />
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>
                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
+                {
+                  opt.warning &&
+                    <div className="govuk-reveal">
+                      <Warning>{opt.warning}</Warning>
+                    </div>
+                }
                 {
                   opt.reveal && showReveal(opt) && (
                     <div className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(opt.value) }) }>
