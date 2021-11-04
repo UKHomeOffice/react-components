@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Types from '../types';
@@ -53,35 +53,38 @@ class CheckboxGroup extends MultipleChoice(Input) {
         <div className="govuk-checkboxes">
           {
             options.map(opt => (
-              <div className="govuk-checkboxes__item" key={this.optionId(opt)}>
-                {
-                  opt.disabled && this.hasValue(opt.value) && <input type="hidden" name={this.props.name} value={opt.value} />
-                }
-                <input
-                  className="govuk-checkboxes__input"
-                  id={this.optionId(opt)}
-                  type="checkbox"
-                  name={this.props.name}
-                  value={opt.value}
-                  disabled={opt.disabled}
-                  {...this.optProps(opt)}
-                />
-                <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>
-                { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
-                {
-                  opt.warning &&
-                    <div className="govuk-reveal">
-                      <Warning>{opt.warning}</Warning>
-                    </div>
-                }
-                {
-                  opt.reveal && showReveal(opt) && (
-                    <div className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(opt.value) }) }>
-                      { opt.reveal }
-                    </div>
-                  )
-                }
-              </div>
+              <Fragment key={this.optionId(opt)}>
+                <div className="govuk-checkboxes__item">
+                  {
+                    opt.disabled && this.hasValue(opt.value) && <input type="hidden" name={this.props.name} value={opt.value} />
+                  }
+                  <input
+                    className="govuk-checkboxes__input"
+                    id={this.optionId(opt)}
+                    type="checkbox"
+                    name={this.props.name}
+                    value={opt.value}
+                    disabled={opt.disabled}
+                    {...this.optProps(opt)}
+                  />
+                  <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>
+                  { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
+                  {
+                    opt.warning &&
+                      <div className="govuk-reveal">
+                        <Warning>{opt.warning}</Warning>
+                      </div>
+                  }
+                  {
+                    opt.reveal && showReveal(opt) && (
+                      <div className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(opt.value) }) }>
+                        { opt.reveal }
+                      </div>
+                    )
+                  }
+                </div>
+                { opt.additionalContent }
+              </Fragment>
             ))
           }
         </div>
