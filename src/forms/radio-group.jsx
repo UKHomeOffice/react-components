@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Types from '../types';
@@ -67,7 +68,7 @@ class RadioGroup extends MultipleChoice(Input) {
                   {...this.optProps(opt)}
                 />
                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-radios__label">{opt.label}</label>
-                { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
+                { opt.hint && <span className="govuk-hint"><ReactMarkdown>{opt.hint}</ReactMarkdown></span> }
                 {
                   opt.reveal && !this.props.inline && getReveal(opt)
                 }
