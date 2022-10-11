@@ -13,7 +13,7 @@ class TextArea extends Input {
   }
 
   render() {
-    const {label, hint, error, name, rows, cols, disabled, readonly, className, autoExpand, ...other} = this.props;
+    const {label, hint, error, name, rows, cols, disabled, readonly, className, autoExpand, autoFocus, ...other} = this.props;
 
     return <div className={classnames(this.errorClass('govuk-form-group'), className)}>
       <label className="govuk-label" htmlFor={this.id()}>{label}</label>
@@ -35,6 +35,8 @@ class TextArea extends Input {
         {...omit(other, 'maxHeight', 'dispatch')}
         {...this.checkedOrUnchecked()}
         onInput={autoExpand ? this.onInput.bind(this) : null}
+        onFocus={autoExpand ? this.onInput.bind(this) : null}
+        autoFocus={autoFocus}
       />
     </div>;
   }
