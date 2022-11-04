@@ -95,13 +95,13 @@ RadioGroup.propTypes = {
   name: PropTypes.string.isRequired,
   options: Types.options.isRequired,
   initialHideReveals: PropTypes.bool,
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  label: PropTypes.node.isRequired,
   onChange: PropTypes.func,
   id: PropTypes.string,
   inline: PropTypes.bool,
   value: PropTypes.oneOfType([Types.value, PropTypes.arrayOf(Types.value)]),
-  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  error: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+  hint: PropTypes.node,
+  error: PropTypes.node
 };
 
 export default RadioGroup;
