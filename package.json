@@ -36,7 +36,7 @@
     "react-markdown": "^6.0.2"
   },
   "peerDependencies": {
-    "prop-types": ">= 15.4.0",
+    "prop-types": "^15.8.1",
     "react": ">= 16.0.0"
   },
   "devDependencies": {
