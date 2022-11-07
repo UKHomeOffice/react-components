@@ -32,7 +32,7 @@ class TextArea extends Input {
         cols={cols}
         disabled={disabled}
         readOnly={readonly}
-        {...omit(other, 'maxHeight', 'dispatch', 'fieldName', 'initialHideReveals', 'meta')}
+        {...omit(other, 'maxHeight', 'dispatch')}
         {...this.checkedOrUnchecked()}
         onInput={autoExpand ? this.onInput.bind(this) : null}
         onFocus={autoExpand ? this.onInput.bind(this) : null}
