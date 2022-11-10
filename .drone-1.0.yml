@@ -3,11 +3,11 @@ name: default
 type: kubernetes
 steps:
   - name: install
-    image: node:14
+    image: node:18
     commands:
       - npm ci
   - name: test
-    image: node:14
+    image: node:18
     commands:
       - npm test
   - name: publish
