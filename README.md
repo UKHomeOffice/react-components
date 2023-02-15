@@ -1,7 +1,6 @@
 # @ukhomeoffice/react-components
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
-A set of react components to build the basic elements descibed in [GOV.UK Design System](https://design-system.service.gov.uk/).
+A set of react components to build the basic elements described in [GOV.UK Design System](https://design-system.service.gov.uk/).
 
 ## Details
 
