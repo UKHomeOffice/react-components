@@ -1,6 +1,6 @@
 {
   "name": "@ukhomeoffice/react-components",
-  "version": "0.10.7",
+  "version": "1.0.0",
   "description": "React components for Home Office layouts and elements",
   "main": "dist/ho-react-components.js",
   "module": "dist/ho-react-components.module.js",
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/ukhomeoffice/react-components.git"
   },
-  "author": "Leonard Martin <hello@lennym.co.uk>",
+  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ukhomeoffice/react-components/issues"
@@ -73,6 +73,6 @@
     "index.js"
   ],
   "publishConfig": {
-    "access": "public"
+    "@ukhomeoffice:registry": "https://npm.pkg.github.com"
   }
 }
