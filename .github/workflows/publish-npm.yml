@@ -1,4 +1,4 @@
-name: 'SemVer tag, npm version and publish'
+name: 'Semver tag, npm version and publish'
 on:
   pull_request:
     types:
@@ -33,28 +33,21 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@ukhomeoffice'
 
-      - name: Calculate SemVer value
+      - name: Calculate semver value
         id: calculate
         uses: UKHomeOffice/sas-github-workflows/.github/actions/calculate-semver-value@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_to_highest: ${{ github.base_ref == 'main' }}
 
-      - name: Bump Release Version
+      - name: Bump release version
         run: |
           npm version --no-git-tag ${{ steps.calculate.outputs.version }}
         shell: bash
 
       - name: Install npm dependencies
         run: |
-          npm --loglevel warn ci
-        shell: bash
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Build
-        run: |
-          npm --loglevel warn build
+          npm --loglevel warn ci --ignore-scripts
         shell: bash
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -66,18 +59,21 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Configure Git
+      - name: Configure git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
         shell: bash
 
-      - name: Commit Version and Tag Repository
+      - name: Commit version
         run: |
           git add "package.json"
           git add "package-lock.json"
           git commit -m "npm version ${{ steps.calculate.outputs.version }}"
           git push
-          
-          git tag ${{ steps.calculate.outputs.version }}
-          git push --tags
+
+      - name: Tag repository
+        uses: UKHomeOffice/semver-tag-action@v4
+        with:
+          tag: ${{ steps.calculate.outputs.version }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}

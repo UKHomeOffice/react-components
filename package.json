@@ -17,7 +17,7 @@
     "build": "npm run build:js",
     "build:js": "rollup -c rollup.config.js",
     "prebuild:css": "mkdir -p ./assets",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "audit": "npm audit --audit-level=critical"
   },
   "repository": {
