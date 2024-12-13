@@ -1,9 +1,79 @@
-name: 'Publish - npm'
+name: 'Semver tag, npm version and publish'
 on:
   pull_request:
-    types: [ closed ]
+    types:
+      - closed
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 jobs:
-  publish:
-    uses: UKHomeOffice/sas-github-workflows/.github/workflows/publish-npm.yml@v1
-    secrets: inherit
+  tag:
+    name: 'Version, publish and tag'
+    if: |
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.labels.*.name, 'skip-release') == false
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@ukhomeoffice'
+
+      - name: Calculate semver value
+        id: calculate
+        uses: UKHomeOffice/sas-github-workflows/.github/actions/calculate-semver-value@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_to_highest: ${{ github.base_ref == 'main' }}
+
+      - name: Bump release version
+        run: |
+          npm version --no-git-tag ${{ steps.calculate.outputs.version }}
+        shell: bash
+
+      - name: Install npm dependencies
+        run: |
+          npm --loglevel warn ci --ignore-scripts
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Publish npm package
+        run: |
+          npm publish
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Configure git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+        shell: bash
+
+      - name: Commit version
+        run: |
+          git add "package.json"
+          git add "package-lock.json"
+          git commit -m "npm version ${{ steps.calculate.outputs.version }}"
+          git push
+
+      - name: Tag repository
+        uses: UKHomeOffice/semver-tag-action@v4
+        with:
+          tag: ${{ steps.calculate.outputs.version }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}

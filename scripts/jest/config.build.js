@@ -1,10 +1,11 @@
-const sourceConfig = require('./config.source');
+import sourceConfig from './config.source.js';
 
 const moduleNameMapper = {
   'ho-react-components': '<rootDir>/dist/ho-react-components.js'
 };
 
-module.exports = Object.assign({}, sourceConfig, {
+// noinspection JSUnusedGlobalSymbols
+export default Object.assign({}, sourceConfig, {
   moduleNameMapper: moduleNameMapper
 });
 

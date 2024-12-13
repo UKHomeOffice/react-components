@@ -68,8 +68,7 @@ class RadioGroup extends MultipleChoice(Input) {
                                 />
                                 <label htmlFor={this.optionId(opt)} className="govuk-label govuk-radios__label">{opt.label}</label>
                                 { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
-                                {
-                                  opt.warning &&
+                                { opt.warning &&
                                   <div className="govuk-reveal">
                                       <Warning>{opt.warning}</Warning>
                                   </div>
