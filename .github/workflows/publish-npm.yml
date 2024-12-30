@@ -41,11 +41,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_to_highest: ${{ github.base_ref == 'main' }}
 
-      - name: Bump release version
-        run: |
-          npm version --no-git-tag ${{ steps.calculate.outputs.version }}
-        shell: bash
-
       - name: Install npm dependencies
         run: |
           npm --loglevel warn ci --ignore-scripts
@@ -59,20 +54,6 @@ jobs:
         shell: bash
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Configure git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git remote set-url origin https://${{ secrets.AUTH_TOKEN }}@github.com/UKHomeOffice/react-components.git
-        shell: bash
-
-      - name: Commit version
-        run: |
-          git add "package.json"
-          git add "package-lock.json"
-          git commit -m "npm version ${{ steps.calculate.outputs.version }}"
-          git push
 
       - name: Tag repository
         uses: UKHomeOffice/semver-tag-action@v4

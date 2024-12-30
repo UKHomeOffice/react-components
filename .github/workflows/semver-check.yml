@@ -1,8 +1,0 @@
-name: 'Check SemVer label'
-on:
-  pull_request:
-    types: [ labeled, unlabeled, opened, reopened, synchronize ]
-
-jobs:
-  version:
-    uses: UKHomeOffice/sas-github-workflows/.github/workflows/semver-check.yml@v2
