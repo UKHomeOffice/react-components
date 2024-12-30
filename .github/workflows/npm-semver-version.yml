@@ -13,6 +13,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -29,6 +32,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_to_highest: ${{ github.base_ref == 'main' }}
 
+      - name: Reset branch from main version
+        id: compare
+        run: |
+          localFile=$(cat package.json)
+          originFile=$(git show origin/${{ inputs.mainLineBranchName }}:package.json)
+          localVersion=$(echo $localFile | jq -r '.version')
+          originVersion=$(echo $originFile | jq -r '.version')
+          if [ "$localVersion" != "$originVersion" ]; then
+            npm --no-git-tag-version version $originVersion
+          fi
+        shell: bash
+
       - name: Bump release version
         run: |
           npm version --no-git-tag ${{ steps.calculate.outputs.version }}
@@ -38,7 +53,6 @@ jobs:
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git remote set-url origin https://${{ secrets.AUTH_TOKEN }}@github.com/UKHomeOffice/react-components.git
         shell: bash
 
       - name: Commit version
@@ -46,4 +60,4 @@ jobs:
           git add "package.json"
           git add "package-lock.json"
           git commit -m "npm version ${{ steps.calculate.outputs.version }}"
-          git push --force
+          git push --set-upstream origin ${{ github.head_ref }} --force
