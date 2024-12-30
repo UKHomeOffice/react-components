@@ -54,5 +54,5 @@ jobs:
       - name: Tag repository
         uses: UKHomeOffice/semver-tag-action@v4
         with:
-          tag: ${{ env.NEW_VERSION }}
+          tag: ${{ env.NPM_VERSION }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
