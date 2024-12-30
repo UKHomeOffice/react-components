@@ -36,7 +36,7 @@ jobs:
         id: compare
         run: |
           localFile=$(cat package.json)
-          originFile=$(git show origin/${{ inputs.mainLineBranchName }}:package.json)
+          originFile=$(git show origin/main:package.json)
           localVersion=$(echo $localFile | jq -r '.version')
           originVersion=$(echo $originFile | jq -r '.version')
           if [ "$localVersion" != "$originVersion" ]; then
