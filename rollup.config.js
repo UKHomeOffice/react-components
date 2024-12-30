@@ -14,8 +14,6 @@ const externalDeps = Object.keys(
 const nodeDeps = ['path'];
 const external = ['react'].concat(externalDeps).concat(nodeDeps);
 
-console.log(external);
-
 const globals = {
     react: 'React',
     'prop-types': 'PropTypes'

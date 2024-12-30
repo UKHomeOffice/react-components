@@ -5,7 +5,6 @@
   "main": "dist/ho-react-components.js",
   "module": "dist/ho-react-components.module.js",
   "style": "src/index.scss",
-  "type": "module",
   "scripts": {
     "pretest:unit-built": "npm run build",
     "test": "npm run test:unit",
