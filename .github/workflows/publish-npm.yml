@@ -47,8 +47,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+      - name: Extract npm Package Version
+        run: echo "NPM_VERSION=$(cat package.json | jq -r '.version')" >> ${GITHUB_ENV}
+        shell: bash
+
       - name: Tag repository
         uses: UKHomeOffice/semver-tag-action@v4
         with:
-          tag: ${{ steps.calculate.outputs.version }}
+          tag: ${{ env.NEW_VERSION }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
