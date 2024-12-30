@@ -17,7 +17,6 @@ jobs:
       github.event.pull_request.merged == true &&
       contains(github.event.pull_request.labels.*.name, 'skip-release') == false
     runs-on: ubuntu-latest
-    environment: 'deployment'
     permissions:
       packages: write
       contents: write
@@ -33,13 +32,6 @@ jobs:
           cache: 'npm'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@ukhomeoffice'
-
-      - name: Calculate semver value
-        id: calculate
-        uses: UKHomeOffice/sas-github-workflows/.github/actions/calculate-semver-value@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_to_highest: ${{ github.base_ref == 'main' }}
 
       - name: Install npm dependencies
         run: |
