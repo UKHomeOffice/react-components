@@ -7,7 +7,6 @@ jobs:
   version:
     if: contains(github.event.pull_request.labels.*.name, 'skip-release') == false
     runs-on: ubuntu-latest
-    environment: 'deployment'
     permissions:
       packages: write
       contents: write
