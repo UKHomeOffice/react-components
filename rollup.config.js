@@ -49,8 +49,7 @@ export default {
         }),
         babel({
             exclude: 'node_modules/**',
-            plugins: ['@babel/plugin-external-helpers'],
-            babelHelpers: 'external',
+            babelHelpers: 'bundled',
         }),
         terser({
             sourceMap: true

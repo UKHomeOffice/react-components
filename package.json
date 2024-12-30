@@ -9,7 +9,7 @@
     "pretest:unit-built": "npm run build",
     "test": "npm run test:unit",
     "lint": "eslint . --ext jsx,js",
-    "test:unit": "npm run test:unit-source",
+    "test:unit": "npm run test:unit-source && npm run test:unit-built",
     "test:unit-built": "jest --config scripts/jest/config.build.mjs",
     "test:unit-source": "jest --config scripts/jest/config.source.mjs",
     "test:watch": "npm run test:unit-source -- --watch",
@@ -41,7 +41,6 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/eslint-plugin": "^7.25.9",
-    "@babel/plugin-external-helpers": "^7.25.9",
     "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
