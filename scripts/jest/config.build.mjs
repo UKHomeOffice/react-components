@@ -1,4 +1,4 @@
-import sourceConfig from './config.source.js';
+import sourceConfig from './config.source.mjs';
 
 const moduleNameMapper = {
   'ho-react-components': '<rootDir>/dist/ho-react-components.js'
