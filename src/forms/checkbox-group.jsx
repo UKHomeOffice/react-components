@@ -6,10 +6,10 @@ import Warning from '../warning';
 import Input from './input';
 import MultipleChoice from '../mixins/multiple-choice';
 
-const CheckboxItem = ({ disabled, checked, name, value, id, label, warning, hint, reveal, showReveal, revealHidden, ...props }) =>
+const CheckboxItem = ({ disabled, name, value, id, label, warning, hint, reveal, showReveal, revealHidden, ...props }) =>
     <div className="govuk-checkboxes__item">
         {
-            disabled && checked && <input type="hidden" name={name} value={value}/>
+            disabled && props.checked && <input type="hidden" name={name} value={value}/>
         }
         <input
             className="govuk-checkboxes__input"
