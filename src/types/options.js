@@ -7,8 +7,14 @@ export default PropTypes.arrayOf(
             value,
             label: PropTypes.node,
             hint: PropTypes.node,
-            disabled: PropTypes.bool
+            disabled: PropTypes.bool,
+            additionalContent: PropTypes.string,
         }),
-        value
+        value,
+        PropTypes.shape({
+            divider: PropTypes.node,
+            className: PropTypes.string,
+            additionalContent: PropTypes.string
+        })
     ])
 );

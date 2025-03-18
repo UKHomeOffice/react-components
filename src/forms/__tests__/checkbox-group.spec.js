@@ -86,4 +86,64 @@ describe('CheckboxGroup', () => {
     expect(rendered.find('p.revealed').length).toEqual(1);
   });
 
+  it('should render a divider', () => {
+    const options = [
+      {
+        label: 'one',
+        value: 1
+      },
+      {
+        label: 'two',
+        value: 2
+      },
+      {
+        id: 'divider',
+        divider: 'or'},
+      {
+        label: 'three',
+        value: 3,
+      }
+    ];
+    const rendered = render(<CheckboxGroup
+        label="test"
+        name="date"
+        options={options}
+        value={1}
+        initialHideReveals={false}
+    />);
+    expect(rendered.find('.govuk-checkboxes__divider').length).toEqual(1);
+    expect(rendered.find('.govuk-checkboxes__divider').text()).toEqual('or');
+  })
+
+  it('should render a divider with a long name and custom class', () => {
+    const options = [
+      {
+        label: 'one',
+        value: 1
+      },
+      {
+        label: 'two',
+        value: 2
+      },
+      {
+        id: 'divider',
+        divider: 'Or select each that applies:',
+        className: 'govuk-checkboxes__divider govuk-checkboxes__divider-wide'
+      },
+      {
+        label: 'three',
+        value: 3,
+      }
+    ];
+    const rendered = render(<CheckboxGroup
+        label="test"
+        name="date"
+        options={options}
+        value={1}
+        initialHideReveals={false}
+    />);
+    expect(rendered.find('.govuk-checkboxes__divider-wide').length).toEqual(1);
+    expect(rendered.find('.govuk-checkboxes__divider-wide').text()).toEqual('Or select each that applies:');
+  })
+
 });

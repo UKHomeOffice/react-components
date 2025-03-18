@@ -6,6 +6,42 @@ import Warning from '../warning';
 import Input from './input';
 import MultipleChoice from '../mixins/multiple-choice';
 
+const CheckboxItem = ({ disabled, checked, name, value, id, label, warning, hint, reveal, showReveal, revealHidden, ...props }) =>
+    <div className="govuk-checkboxes__item">
+        {
+            disabled && checked && <input type="hidden" name={name} value={value}/>
+        }
+        <input
+            className="govuk-checkboxes__input"
+            id={id}
+            type="checkbox"
+            name={name}
+            value={value}
+            disabled={disabled}
+            {...props}
+        />
+        <label htmlFor={id} className="govuk-label govuk-checkboxes__label">{label}</label>
+        {hint && <span className="govuk-hint">{hint}</span>}
+        {
+            warning &&
+            <div className="govuk-reveal">
+                <Warning>{warning}</Warning>
+            </div>
+        }
+        {
+            reveal && showReveal && (
+                <div
+                    className={classnames('govuk-reveal', { hidden: revealHidden })}>
+                    {reveal}
+                </div>
+            )
+        }
+    </div>;
+
+const CheckboxDivider = ({ divider, className = 'govuk-checkboxes__divider' }) =>
+    <div className={className}>{divider}</div>;
+
+
 class CheckboxGroup extends MultipleChoice(Input) {
 
     componentDidMount() {
@@ -13,7 +49,7 @@ class CheckboxGroup extends MultipleChoice(Input) {
     }
 
     optProps(opt) {
-        if (this.props.onChange) {
+        if (this.props.onChange || this.props.disabled) {
             return {
                 onChange: this.props.onChange,
                 checked: this.hasValue(opt.value)
@@ -54,35 +90,16 @@ class CheckboxGroup extends MultipleChoice(Input) {
                     {
                         options.map(opt => (
                             <Fragment key={this.optionId(opt)}>
-                                <div className="govuk-checkboxes__item">
-                                    {
-                                        opt.disabled && this.hasValue(opt.value) && <input type="hidden" name={this.props.name} value={opt.value} />
-                                    }
-                                    <input
-                                        className="govuk-checkboxes__input"
-                                        id={this.optionId(opt)}
-                                        type="checkbox"
-                                        name={this.props.name}
-                                        value={opt.value}
-                                        disabled={opt.disabled}
-                                        {...this.optProps(opt)}
-                                    />
-                                    <label htmlFor={this.optionId(opt)} className="govuk-label govuk-checkboxes__label">{opt.label}</label>
-                                    { opt.hint && <span className="govuk-hint">{opt.hint}</span> }
-                                    {
-                                        opt.warning &&
-                      <div className="govuk-reveal">
-                          <Warning>{opt.warning}</Warning>
-                      </div>
-                                    }
-                                    {
-                                        opt.reveal && showReveal(opt) && (
-                                            <div className={ classnames('govuk-reveal', { hidden: !this.props.initialHideReveals && this.state && !this.hasValue(opt.value) }) }>
-                                                { opt.reveal }
-                                            </div>
-                                        )
-                                    }
-                                </div>
+                                {
+                                    opt.divider
+                                        ? <CheckboxDivider {...opt} />
+                                        : <CheckboxItem
+                                            id={this.optionId(opt)}
+                                            showReveal={showReveal(opt)}
+                                            revealHidden={!this.props.initialHideReveals && this.state && !this.hasValue(opt.value)}
+                                            {...{ ...opt, ...this.optProps(opt) }}
+                                        />
+                                }
                                 { opt.additionalContent }
                             </Fragment>
                         ))
