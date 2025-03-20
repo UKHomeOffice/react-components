@@ -95,6 +95,7 @@ class CheckboxGroup extends MultipleChoice(Input) {
                                         ? <CheckboxDivider {...opt} />
                                         : <CheckboxItem
                                             id={this.optionId(opt)}
+                                            name={this.props.name}
                                             showReveal={showReveal(opt)}
                                             revealHidden={!this.props.initialHideReveals && this.state && !this.hasValue(opt.value)}
                                             {...{ ...opt, ...this.optProps(opt) }}
