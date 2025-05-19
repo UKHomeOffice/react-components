@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
+const DefaultWrapper = ({ children, type, className, id }) =>
+    <span id={id} className={className || `govuk-${type}`}>
+        {children}
+    </span>;
+
 class Input extends React.Component {
 
     id() {
@@ -28,14 +33,16 @@ class Input extends React.Component {
         if (!this.props[type]) {
             return null;
         }
+        const Component = this.props[`${type}Wrapper`] ?? DefaultWrapper;
+
         return (
-            <span id={`${this.id()}-${type}`} className={className || `govuk-${type}`}>
+            <Component type={type} className={className} id={`${this.id()}-${type}`}>
                 {
                     React.isValidElement(this.props[type])
                         ? this.props[type]
                         : <ReactMarkdown>{this.props[type]}</ReactMarkdown>
                 }
-            </span>
+            </Component>
         );
     }
 
