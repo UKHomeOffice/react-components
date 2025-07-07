@@ -15,6 +15,7 @@ class TextInput extends Input {
                     type={this.props.type}
                     disabled={this.props.disabled}
                     {...this.checkedOrUnchecked()}
+                    inputMode={this.props.inputMode}
                 />
             </InputWrapper>
         );
@@ -34,7 +35,8 @@ TextInput.propTypes = {
     type: PropTypes.string,
     value: PropTypes.string,
     hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    inputmode: PropTypes.oneOf(['none', 'text', 'decimal', 'numeric', 'tel', 'search', 'email', 'url'])
 };
 
 export default TextInput;
