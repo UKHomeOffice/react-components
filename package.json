@@ -1,6 +1,6 @@
 {
   "name": "@ukhomeoffice/react-components",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "React components for Home Office layouts and elements",
   "main": "dist/ho-react-components.js",
   "module": "dist/ho-react-components.module.js",
@@ -44,7 +44,7 @@
     "@babel/eslint-plugin": "^7.27.1",
     "@babel/plugin-transform-runtime": "^7.27.4",
     "@babel/preset-env": "^7.27.2",
-    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-react": "^7.27.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-json": "^6.1.0",

@@ -21,8 +21,6 @@ updates:
       prefix: "⬆️ "
     pull-request-branch-name:
       separator: "-"
-    reviewers:
-      - "UKHomeOffice/asl-devs"
     labels:
       - "skip-release"
       - "dependencies"
