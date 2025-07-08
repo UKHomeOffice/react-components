@@ -59,7 +59,7 @@
     "eslint-plugin-react": "^7.37.5",
     "jest": "^30.0.4",
     "jest-cli": "^30.0.4",
-    "jest-environment-jsdom": "^29.7.0",
+    "jest-environment-jsdom": "^30.0.4",
     "jest-serializer-html": "^7.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
