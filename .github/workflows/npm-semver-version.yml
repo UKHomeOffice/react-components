@@ -59,5 +59,7 @@ jobs:
         run: |
           git add "package.json"
           git add "package-lock.json"
-          git commit -m "npm version ${{ steps.calculate.outputs.version }}"
-          git push --set-upstream origin ${{ github.head_ref }} --force
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "npm version ${{ steps.calculate.outputs.version }}"
+            git push --set-upstream origin ${{ github.head_ref }} --force
+          fi
