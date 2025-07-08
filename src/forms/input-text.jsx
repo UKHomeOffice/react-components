@@ -9,7 +9,7 @@ class TextInput extends Input {
         return (
             <InputWrapper {...this.props}>
                 <input
-                    className={this.errorClass('govuk-input')}
+                    className={`${this.errorClass('govuk-input')} ${this.props.className}`}
                     id={this.id()}
                     name={this.props.name}
                     type={this.props.type}
