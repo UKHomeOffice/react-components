@@ -36,7 +36,7 @@ TextInput.propTypes = {
     value: PropTypes.string,
     hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    inputmode: PropTypes.oneOf(['none', 'text', 'decimal', 'numeric', 'tel', 'search', 'email', 'url'])
+    inputMode: PropTypes.oneOf(['none', 'text', 'decimal', 'numeric', 'tel', 'search', 'email', 'url'])
 };
 
 export default TextInput;

@@ -18,7 +18,7 @@
     "build:js": "rollup -c rollup.config.js",
     "prebuild:css": "mkdir -p ./assets",
     "prepare": "npm run build",
-    "audit": "npm audit || (npm audit --json | grep -q 'GHSA-fjxv-7rqg-78g4' && echo 'Ignoring known vulnerability' && exit 0) || exit 1"
+    "audit": "npm audit --audit-level=critical"
   },
   "repository": {
     "type": "git",
@@ -57,14 +57,14 @@
     "enzyme-to-json": "^3.6.2",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.5",
-    "jest": "^30.0.4",
-    "jest-cli": "^30.0.4",
-    "jest-environment-jsdom": "^29.7.0",
+    "jest": "^30.2.0",
+    "jest-cli": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "jest-serializer-html": "^7.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-test-renderer": "^16.14.0",
-    "rollup": "^2.79.2"
+    "rollup": "^2.80.0"
   },
   "files": [
     "components/*",
