@@ -57,9 +57,13 @@ class DateInput extends Input {
         const { value } = this.state;
         return <div className={this.errorClass('govuk-form-group')}>
             <fieldset className="govuk-fieldset" aria-describedby={this.dateFragment('hint')} role="group">
-                <legend className="govuk-fieldset__legend">
-                    <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>
-                </legend>
+                {
+                    this.props.label && (
+                        <legend className="govuk-fieldset__legend">
+                            <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>
+                        </legend>
+                    )
+                }
                 {
                     this.getContentPart('hint')
                 }

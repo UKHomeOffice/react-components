@@ -76,7 +76,7 @@ class CheckboxGroup extends MultipleChoice(Input) {
                 {
                     this.props.label && (
                         <legend className="govuk-fieldset__legend">
-                            {this.props.label && <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>}
+                            <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>
                         </legend>
                     )
                 }

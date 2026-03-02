@@ -44,9 +44,13 @@ class RadioGroup extends MultipleChoice(Input) {
                 id={this.props.id || this.props.name}
                 className={classnames('govuk-fieldset', { inline: this.props.inline }, this.props.className)}
             >
-                <legend className="govuk-fieldset__legend">
-                    <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>
-                </legend>
+                {
+                    this.props.label && (
+                        <legend className="govuk-fieldset__legend">
+                            <h2 className="govuk-fieldset__heading govuk-heading-l">{this.props.label}</h2>
+                        </legend>
+                    )
+                }
                 {
                     this.getContentPart('hint')
                 }
