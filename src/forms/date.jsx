@@ -28,8 +28,8 @@ class DateInput extends Input {
         const date = (this.props.value || '').split('T')[0];
         const bits = date.split('-');
         return {
-            day: bits[2].replace(/^0+/, ''),
-            month: bits[1].replace(/^0+/, ''),
+            day: bits[2],
+            month: bits[1],
             year: bits[0]
         };
     }
