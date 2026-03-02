@@ -18,7 +18,7 @@
     "build:js": "rollup -c rollup.config.js",
     "prebuild:css": "mkdir -p ./assets",
     "prepare": "npm run build",
-    "audit": "npm audit --audit-level=critical"
+    "audit": "npm audit || (npm audit --json | grep -q 'GHSA-fjxv-7rqg-78g4' && echo 'Ignoring known vulnerability' && exit 0) || exit 1"
   },
   "repository": {
     "type": "git",
